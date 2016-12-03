@@ -23,7 +23,7 @@ public class OffersController {
 	public void setOffersServie(OffersService offersService){
 		this.offersService = offersService;
 	}
-	
+	 
 	@RequestMapping("/offers")
 	public String showOffers(Model model){
 		List<Offer> offers = offersService.getcurrent() ;

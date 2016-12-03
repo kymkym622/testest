@@ -9,12 +9,8 @@
 </head>
 <body>
 
-2011 1학기 ${grades1}</br>
-2011 2학기 ${grades2}</br>
-2015 1학기 ${grades1}</br>
-2015 2학기 ${grades1}</br>
-2016 1학기 ${grades1}</br>
-2016 2학기 ${grades1}</br>
+전기 : ${type1} 
+
 
 </body>
 </html>

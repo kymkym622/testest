@@ -27,15 +27,22 @@ public class OffersController {
 	@RequestMapping("/offers")
 	public String showOffers(Model model){
 		List<Offer> offers = offersService.getcurrent() ;
-		model.addAttribute("offers",offers);
+		model.addAttribute("grades1",offersService.getsemesterGrades(2011,1));
+		model.addAttribute("grades2",1234);
 		return "offers";
+	}
+	@RequestMapping("/type")
+	public String Gradesoftype(Model model){
+		List<Offer> offers = offersService.getcurrent() ;
+		model.addAttribute("type1",offersService.gettypeGrades("Àü±â"));
+		return "type";
 	}
 	
 	
 	@RequestMapping("/createoffer")
 	public String createOffer(Model model){
 		model.addAttribute(new Offer());
-		return "createoffer";
+		return "home";
 	}
 	@RequestMapping("/docreate")
 	public String doCreate(Model model,@Valid Offer offer,BindingResult result){
@@ -47,7 +54,7 @@ public class OffersController {
 			}
 			return "createoffer";
 		}
-		offersService.insert(offer);
+		//offersService.insert(offer);
 		return "offercreated";
 	}
 }

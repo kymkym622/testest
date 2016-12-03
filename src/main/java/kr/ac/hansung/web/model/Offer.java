@@ -5,55 +5,74 @@ import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.NotEmpty;
 
 public class Offer {
-	private int id;
-	@Size(min=2, max=100, message="Nmae must be between 2 and 100 chars")
-	private String name;
-	@Size(message="Please provide a valid email address")
-	@NotEmpty(message="The email address cannot be empty")
-	private String email;
-	@Size(min=5, max=100, message="Text must be between 5 and 100 chars")
-	private String text;
-	
-	
-	public Offer(){
+	int year;
+	int semester;
+	String code;
+	String title;
+	String type;
+	int grades;
+
+	public Offer() {
+
 	}
-	public Offer(int id, String name, String email, String text) {
-		this.id = id;
-		this.name = name;
-		this.email = email;
-		this.text = text;
+
+	public Offer(int year,int semeseter,String code,String title,String type,int grades) {
+		this.year = year;
+		this.semester = semester;
+		this.code = code;
+		this.title = title;
+		this.type = type;
+		this.grades = grades;
 	}
-	public Offer(String name, String email, String text) {
-		this.name = name;
-		this.email = email;
-		this.text = text;
+
+	public int getYear() {
+		return year;
 	}
-	public int getId() {
-		return id;
+
+	public void setYear(int year) {
+		this.year = year;
 	}
-	public void setId(int id) {
-		this.id = id;
+
+	public int getSemester() {
+		return semester;
 	}
-	public String getName() {
-		return name;
+
+	public void setSemester(int semester) {
+		this.semester = semester;
 	}
-	public void setName(String name) {
-		this.name = name;
+
+	public String getCode() {
+		return code;
 	}
-	public String getEmail() {
-		return email;
+
+	public void setCode(String code) {
+		this.code = code;
 	}
-	public void setEmail(String email) {
-		this.email = email;
+
+	public String getTitle() {
+		return title;
 	}
-	public String getText() {
-		return text;
+
+	public void setTitle(String title) {
+		this.title = title;
 	}
-	public void setText(String text) {
-		this.text = text;
+
+	public String getType() {
+		return type;
 	}
-	
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public int getGrades() {
+		return grades;
+	}
+
+	public void setGrades(int grades) {
+		this.grades = grades;
+	}
 	public String toString() {
-		return "Offer [id=" + id + ", name=" + name + ", email=" + email + ", text=" + text + "]";
-	}	
+		return "Offer [ year=" + year + ", code=" + code + ", title=" + title + ", type=" + type+ ", grades=" + grades+"]";
+	}
 }

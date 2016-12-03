@@ -22,8 +22,19 @@ public class OfferDAO {
 
 	public int getRowCount(){
 		String sqlStatement = "select count(*) from offers";
-		return jdbcTemplateObject.queryForObject(sqlStatement,Integer.class);
-		
+		return jdbcTemplateObject.queryForObject(sqlStatement,Integer.class);		
+	}
+	public int getsemesterGrade(int x,int y){
+		String sqlStatement = "select sum(grades) from class where year = ? and semester = ?";
+		return jdbcTemplateObject.queryForObject(sqlStatement,new Object[]{x,y},Integer.class);		
+	}
+	public int gettypeGrade(String type){
+		String sqlStatement = "select sum(grades) from class where type=?";
+		return jdbcTemplateObject.queryForObject(sqlStatement,new Object[]{type},Integer.class);		
+	}
+	public int getGrade(int x,int y){
+		String sqlStatement = "select sum(grades) from class";
+		return jdbcTemplateObject.queryForObject(sqlStatement,new Object[]{x,y},Integer.class);		
 	}
 	//querying and returning a single object
 	public Offer getOffer(String name){
@@ -32,12 +43,16 @@ public class OfferDAO {
 		
 		
 	}
-	//querying and returning a multiple object
 	public List<Offer> getOffers(){
-		String sqlStatement = "select * from offers";
+		String sqlStatement = "select * from class ";
 		return jdbcTemplateObject.query(sqlStatement,new OfferMapper());
 	}
-	public boolean insert(Offer offer){
+	//querying and returning a multiple object
+	public List<Offer> getsemesterOffers(int s,int n){
+		String sqlStatement = "select * from class where year=?  in where semester =?";
+		return jdbcTemplateObject.query(sqlStatement,new Object[]{s,n},new OfferMapper());
+	}
+	/*public boolean insert(Offer offer){
 		String name = offer.getName();
 		String email = offer.getEmail();
 		String text = offer.getText();
@@ -57,5 +72,5 @@ public class OfferDAO {
 		String sqlStatement = "delete from offers where id=?";
 		return (jdbcTemplateObject.update(sqlStatement, new Object[]{id})==1);
 		
-	}
+	}*/
 }
